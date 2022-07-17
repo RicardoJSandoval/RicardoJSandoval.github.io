@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react'
 import './App.css';
+import Navbar from './navbar.js';
+import Home from './pages/home.js'; 
+import Research from './pages/research.js';
+import Photography from './pages/photography.js';
+import { Routes, Route } from "react-router-dom";
 
 function App() {
+useEffect(() => {
+    document.title = "Ricardo Sandoval"
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <div>
+          <Navbar />
+          <div className="container">
+            <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/research" element={<Research />} />
+                    <Route path="/photography" element={<Photography />} />
+            </Routes>
+          </div>
+        </div>
   );
 }
 
